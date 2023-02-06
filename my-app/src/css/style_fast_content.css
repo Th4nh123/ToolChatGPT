@@ -1,0 +1,223 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+}
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font-family: 'Roboto', sans-serif;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+
+body{
+    width: 97%;
+    margin: 10px auto;
+}
+ 
+
+/* FAST LEFT */
+
+
+.fast-container .fast-left, .fast-container .fast-right{
+    padding: 0 5px;
+}
+.fast-left{
+    height: 500px;
+
+}
+
+.fast-left-container {
+    padding: 20px;
+    margin-top: 5px;
+    border: 1.5px solid rgba(185, 185, 185, 0.817);
+    border-radius: 10px;
+}
+
+
+.control{
+    border-right: 1px solid gray;
+}
+
+.type-font{
+    
+    border-right: 1px solid gray;
+
+}
+
+
+.type-font .font-weight{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.font-type{
+    border-right: 1px solid gray;
+    display: flex;
+    width: 400px;
+}
+
+.font-type .dropdown{
+    margin: 0;
+    padding-right: 0;
+}
+
+
+.font-type button{
+    color: black;
+    border: none;
+}
+
+.text-align{
+    border-right: 1px solid black;
+}
+
+.size button::after{
+    margin-left: 30px;
+    
+}
+
+.delete-input input{
+    width: 100%;
+   
+    border: 1px solid rgba(221, 221, 221, 0.817);
+}
+
+/* FAST RIGHT */
+
+.right-container-fast{
+    margin-top: 8px;
+    padding: 20px;
+    border: 1.5px solid rgba(185, 185, 185, 0.817);
+    border-radius: 10px;
+}
+.right-container h3{
+    padding-top: 12px;
+}
+
+
+
+.right-container h5{
+    font-weight: normal;
+}
+
+
+
+.right-select .upload {
+    width: 100px;
+    height: 100px;
+    line-height: 115px;
+    text-align: center;
+    align-items: center;
+    border-radius: 50%;
+    box-shadow: 0px 0px 3px 0px rgba(221, 221, 221, 0.817);
+    background-color: transparent;
+    margin: 15px 0;
+}
+
+.right-select .upload i{
+    font-size: 30px;
+}
+
+.right-select .delete{
+    border: 1px solid rgba(221, 221, 221, 0.817);
+    border-radius: 3px;
+    background-color: transparent;
+    color: gray;
+    padding: 5px 20px;
+    font-size: 12px;
+    margin-left: 30px;
+}
+
+.select-right {
+    background-color: rgb(235, 242, 244);
+    height: 33px; 
+    padding:3px;
+    border: none;
+    border-radius: 3px;
+}
+
+.select-right button{
+    background-color: transparent;
+    font-size: 12px;
+    padding: 2px 7px;
+}
+
+.select-right button.active{
+    background-color: white;
+    border-radius: 3px;
+}
+
+.right-form {
+    margin-bottom: 15px;
+}
+
+.right-form label{
+    font-size: 12px;
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+.right-form label i{
+    font-size: 10px;
+    width: 15px;
+    height: 15px;
+    line-height: 15px;
+    align-items: center;
+    text-align: center;
+    border: 1px solid rgba(221, 221, 221, 0.817);
+    border-radius: 50%;
+}
+
+.right-form .item{
+    border: 1.5px solid rgba(221, 221, 221, 0.817);
+    border-radius: 3px;
+}
+
+.right-form .item i{
+   font-size: 12px;
+   margin: 0 10px;
+}
+
+
+.right-form input{
+    width: 90%;
+   outline: none;
+   padding: 6px;
+}
+
+
+.right-form select{
+    width: 90%;
+    outline: none;
+    font-size: 14px;
+    padding: 9px;
+}
+
+.right-form select option{
+    font-size: 14px;
+}
+
