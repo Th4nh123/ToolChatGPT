@@ -32,16 +32,16 @@ const PageCaoBaiRight = (props) => {
                         <span className='mr-2 ky-hieu' style={{ fontWeight: 'bolder', color: 'blue', padding: '12px' }}>
 
                         </span>
-                        {data_current_id_cam && <span className="status-stop">Dừng cào</span>}
-                        {data_current_id_cam && <span className="status-pedding icon-status d-none">Đang cào</span>}
+                        {/* {data_current_id_cam && <span className="status-stop">Dừng cào</span>} */}
+                        {/* {data_current_id_cam && <span className="status-pedding icon-status d-none">Đang cào</span>} */}
                         {data_current_id_cam && <span style={{ color: 'green', fontWeight: 'bold' }} className="status-get-url d-none ">Đang lấy URL </span>}
                     </div>
                     <div className='col-5 d-flex flex-row justify-content-end'>
 
-                        {data_current_id_cam && !data_trang_thai_cam && <CaoLai value_stop_ref={value_stop_ref} set_value_stop_ref={set_value_stop_ref} get_value_stop_ref={get_value_stop_ref} />}
+                        {/* {data_current_id_cam && !data_trang_thai_cam && <CaoLai value_stop_ref={value_stop_ref} set_value_stop_ref={set_value_stop_ref} get_value_stop_ref={get_value_stop_ref} />} */}
                         {data_current_id_cam && !data_trang_thai_cam && <LayUrlNew />}
                         {data_current_id_cam && !data_trang_thai_cam && <XoaUrl />}
-                        {data_current_id_cam && !data_trang_thai_cam && <XoaData />}
+                        {/* {data_current_id_cam && !data_trang_thai_cam && <XoaData />} */}
                     </div>
                 </div>
                 <DanhSachUrl />

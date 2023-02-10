@@ -14,11 +14,17 @@ export default function PageFastContent() {
     const [Content, setCentent] = useState({
         noidung: 'Nhập câu hỏi ở đây',
     });
+    const dataToken = useSelector(state => state.base.data_token)
+    const dataTemperture = useSelector(state => state.base.data_temperture)
 
     console.log(dataKeyGoogle);
     const handleTest = () => {
         if (dataKeyGoogle.length === 0) {
             Const_Libs.TOAST.error("Hãy nhập 1 Key Api")
+            return;
+        }
+        if (Number.isNaN(Number(dataToken)) || Number.isNaN(Number(dataTemperture))) {
+            Const_Libs.TOAST.error("Hãy bổ sung đầy dủ thông tin cho cài đặt")
             return;
         }
         $('.spin-get-answer').removeClass('d-none')
@@ -32,8 +38,8 @@ export default function PageFastContent() {
         var raw = JSON.stringify({
             "model": "text-davinci-003",
             "prompt": Content.noidung,
-            "max_tokens": 100,
-            "temperature": 0,
+            "max_tokens": Number(dataToken),
+            "temperature": Number(dataTemperture),
             "logprobs": 10
         });
         var requestOptions = {

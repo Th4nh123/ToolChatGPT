@@ -16,6 +16,8 @@ const initialState = {
   data_key_youtube: [],
   data_ngon_ngu: [],
   data_key_have_video: [],
+  temperture: null,
+  token: null
 }
 const BaseReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -128,6 +130,20 @@ const BaseReducer = (state = initialState, action) => {
       return{
         ...state,
         data_key_have_video: action.data_key_have_video
+      }
+    }
+
+    case 'CHANGE_TEMPERTURE': {
+      return {
+        ...state,
+        data_temperture: action.data_temperture
+      }
+    }
+
+    case 'CHANGE_CURRENT_TOKEN': {
+      return {
+        ...state,
+        data_token: action.data_token
       }
     }
 
