@@ -19,7 +19,8 @@ const LayUrlNew = () => {
     const TestKeyGoogle = async () => {
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
-        myHeaders.append("Authorization", `Bearer ${dataKeyGoogle[0].key_api}`);
+        // myHeaders.append("Authorization", `Bearer ${dataKeyGoogle[0].key_api}`);
+        myHeaders.append("Authorization", "Bearer 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");
 
         var raw = JSON.stringify({
             "model": "text-davinci-003",
@@ -36,12 +37,17 @@ const LayUrlNew = () => {
         };
 
         fetch("https://api.openai.com/v1/completions", requestOptions)
-            .then(response => response.text())
+            .then(response => {
+                if (response.status === 200) {
+                    // UpdateCountKeyGoogle(key_api);
+                    // handleGetAllKeyGg();
+                    Const_Libs.TOAST.success('Key hợp lệ')
+                } else {
+                    Const_Libs.TOAST.error('Key không hợp lệ')
+                }
+                response.text()
+            })
             .then(async result => {
-                let answer = JSON.parse(result)
-                $('.spin-get-answer').addClass('d-none')
-                $('.get-answer').html('Lấy câu trả lời')
-                Const_Libs.TOAST.success("Đang lấy key")
             })
             .catch(error => console.log('error', error));
     }
@@ -50,6 +56,7 @@ const LayUrlNew = () => {
         if (data_key_checked.length === 0) {
             Const_Libs.TOAST.error("Vui lòng chọn trước khi thực hiện!!!")
         } else {
+            TestKeyGoogle()
             $('.spin-get-url').removeClass('d-none')
             for (const checkbox of document.querySelectorAll('input[name="key"]')) {
                 if (checkbox.checked) {
