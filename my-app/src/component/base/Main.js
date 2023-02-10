@@ -67,7 +67,7 @@ export default function Main() {
     handleGetCampaign();
   }, [data_current_id_cam])
 
-  function handleSubmitSetting() {
+  function handleChange() {
 
   }
   return (
@@ -190,6 +190,7 @@ export default function Main() {
                         <input type="text"
                           className="form-control" id="name-campaign"
                           placeholder="Nhập temperature...."
+                          onChange={handleChange()}
                         />
                       </div>
                       <div className='col-12 px-1 d-flex align-items-center justify-content-between name-campaign mb-3'>
@@ -200,6 +201,7 @@ export default function Main() {
                         <input type="text"
                           className="form-control" id="name-campaign"
                           placeholder="Nhập token...."
+                          onChange={handleChange()}
                         />
                       </div>
                     </div>
