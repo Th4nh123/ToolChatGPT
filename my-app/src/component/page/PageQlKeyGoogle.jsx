@@ -1,5 +1,4 @@
-import React from 'react'
-import { useEffect } from 'react'
+import React , {useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import DanhSachKeyGg from '../home/PageKeyGoogle/DanhSachKeyGg'
 import TestKeyGg from '../home/PageKeyGoogle/TestKeyGg'
@@ -19,6 +18,10 @@ const PageQlKeyGoogle = () => {
         }).catch(err => console.log(err))
     }
 
+    useEffect(() => {
+        handleGetAllKeyGg()
+    }, []);
+    
     return (
         <div style={{ height: '77vh', width: '900px', margin: 'auto', border: '1px solid #ccc', borderRadius: '5px', padding: '8px' }}>
             <div className='right-container position-relative'>

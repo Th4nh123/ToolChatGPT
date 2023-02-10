@@ -76,9 +76,9 @@ const TestKeyGg = () => {
 
     return (
         <>
-            {/* <button type="button" className="start-test-gg btn btn-primary fw-bolder" style={{ fontSize: '14px' }} onClick={() => handleTestKeyGoogle()}>
+            <button type="button" className="start-test-gg btn btn-primary fw-bolder" style={{ fontSize: '14px' }} onClick={() => handleTestKeyGoogle()}>
                 Test Key
-            </button> */}
+            </button>
             <button type="button" className="stop-test-gg btn btn-primary fw-bolder d-none" style={{ fontSize: '14px' }} onClick={() => handleStopTestKeyGoogle()}>
                 Dừng test Key
             </button>

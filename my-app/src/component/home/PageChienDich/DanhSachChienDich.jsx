@@ -28,8 +28,7 @@ const DanhSachChienDich = () => {
 
   useEffect(() => {
     handleGetCampaign()
-    console.log(dataCam)
-  })
+  },[])
   useEffect(() => {
     handleGetCampaign()
 

@@ -1,25 +1,33 @@
 import '../../css/style_fast_content.css'
-import $ from "jquery";
+import $, { data } from "jquery";
 import useState from 'react-usestateref'
 import Tinymce from '../libs/Tinymce'
 import { Const_Libs } from '../libs/Const_Libs';
+import { useDispatch, useSelector } from 'react-redux'
 
 
 
 export default function PageFastContent() {
+
+    const dataKeyGoogle = useSelector(state => state.base.data_key_google)
     var [state, setState, ref] = useState("<p>Text here.............</p>")
     const [Content, setCentent] = useState({
         noidung: 'Nhập câu hỏi ở đây',
     });
 
+    console.log(dataKeyGoogle);
     const handleTest = () => {
+        if (dataKeyGoogle.length === 0) {
+            Const_Libs.TOAST.error("Hãy nhập 1 Key Api")
+            return;
+        }
         $('.spin-get-answer').removeClass('d-none')
         $('.get-answer').text('Đang lấy câu trả lời')
         console.log(document.querySelector("textarea"));
         console.log(Content);
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
-        myHeaders.append("Authorization", "Bearer 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");
+        myHeaders.append("Authorization", `Bearer ${dataKeyGoogle[0].key_api}`);
 
         var raw = JSON.stringify({
             "model": "text-davinci-003",
