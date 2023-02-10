@@ -63,8 +63,9 @@ const XoaData = () => {
                         let id_key = checkbox.getAttribute('data-id-key')
 
                         await ajaxCallGet('delete-url-by-id-key/' + id_key).then(rs => {
-                            // handleResetKey(id_key)
-                            // handleGetUrlByKey(id_key)
+                            handleResetKey(id_key)
+                            handleGetUrlByKey(id_key)
+                            Const_Libs.TOAST.error('Xóa thành công!!!')
                         }).catch(err => console.log(err))
                     }
                 }
@@ -95,7 +96,8 @@ const XoaData = () => {
                 style={{ fontSize: '14px' }}
             >
                 <span className="spinner-border spinner-border-sm d-none spin-clear-data" style={{ marginRight: '3px' }}></span>
-                Clear Data
+                {/* Clear Data */}
+                Xóa phản hồi
             </button>
 
         </div>

@@ -62,7 +62,7 @@ const ModalGetDataKey = (props) => {
                     URL.revokeObjectURL(href);
                     resetData();
                     console.log('tai xong json')
-                    await downloadTextFile();
+                    // await downloadTextFile();
                 })
                 .catch(err => {
                     Const_Libs.TOAST.error('Có 1 vài lỗi khi tải file JSON,')
@@ -152,7 +152,7 @@ const ModalGetDataKey = (props) => {
                     document.body.removeChild(link);
                     URL.revokeObjectURL(href);
                     console.log('tai xong json')
-                    await downloadAllTextFile();
+                    // await downloadAllTextFile();
                 })
                 .catch(err => {
                     Const_Libs.TOAST.error('Có 1 vài lỗi khi tải file JSON,')

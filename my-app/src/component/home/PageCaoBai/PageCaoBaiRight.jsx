@@ -40,8 +40,8 @@ const PageCaoBaiRight = (props) => {
 
                         {/* {data_current_id_cam && !data_trang_thai_cam && <CaoLai value_stop_ref={value_stop_ref} set_value_stop_ref={set_value_stop_ref} get_value_stop_ref={get_value_stop_ref} />} */}
                         {data_current_id_cam && !data_trang_thai_cam && <LayUrlNew />}
-                        {data_current_id_cam && !data_trang_thai_cam && <XoaUrl />}
-                        {/* {data_current_id_cam && !data_trang_thai_cam && <XoaData />} */}
+                        {/* {data_current_id_cam && !data_trang_thai_cam && <XoaUrl />} */}
+                        {data_current_id_cam && !data_trang_thai_cam && <XoaData />}
                     </div>
                 </div>
                 <DanhSachUrl />
