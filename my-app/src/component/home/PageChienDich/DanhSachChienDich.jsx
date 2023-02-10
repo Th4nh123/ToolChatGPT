@@ -28,6 +28,10 @@ const DanhSachChienDich = () => {
 
   useEffect(() => {
     handleGetCampaign()
+    console.log(dataCam)
+  })
+  useEffect(() => {
+    handleGetCampaign()
 
     $('#checkAllCam').click(function () {
       if ($(this).prop('checked')) {
@@ -37,7 +41,6 @@ const DanhSachChienDich = () => {
       }
     })
   }, [data_trang_thai_cam])
-
   return (
     <table className='table '>
       <colgroup>

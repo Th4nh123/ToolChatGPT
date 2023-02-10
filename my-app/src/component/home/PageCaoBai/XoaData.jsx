@@ -53,41 +53,6 @@ const XoaData = () => {
             return rs
         }).catch(err => console.log(err))
     }
-    const getDataIdHaveVideo = async (id_cam) => {
-        let arr1 = [];
-        await ajaxCallGet(`get-data-id-have-video/${id_cam}`).then(async rs => {
-            await rs.map(item => {
-                arr1.push(item.id);
-            })
-            let reducedArray = arr1.reduce((acc, curr, _, arr) => {
-                if (acc.length == 0) acc.push({ idKey: curr, count: 1 })
-                else if (acc.findIndex(f => f.idKey === curr) === -1) acc.push({ idKey: curr, count: 1 })
-                else ++acc[acc.findIndex(f => f.idKey === curr)].count
-                return acc
-            }, []);
-
-            dispatch(changeDataKeyHaveVideo([...reducedArray]))
-        })
-    }
-
-    
-    const getDataIdHaveUrlGoogle = async (id_cam) => {
-        let arr1 = [];
-        await ajaxCallGet(`get-data-id-have-url-google/${id_cam}`).then(async rs => {
-            await rs.map(item => {
-                arr1.push(item.id);
-            })
-            let reducedArray = arr1.reduce((acc, curr, _, arr) => {
-                if (acc.length == 0) acc.push({ idKey: curr, count: 1 })
-                else if (acc.findIndex(f => f.idKey === curr) === -1) acc.push({ idKey: curr, count: 1 })
-                else ++acc[acc.findIndex(f => f.idKey === curr)].count
-                return acc
-            }, []);
-
-            dispatch(changeDataKeyHaveGoogle([...reducedArray]))
-        })
-    }
-
 
     const handleClearDataByCheckBox = async () => {
         if (data_current_id_cam) {

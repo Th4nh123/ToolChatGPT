@@ -3,7 +3,6 @@ import $ from 'jquery'
 import PageBlackListNew from '../page/PageBlackListNew'
 import PageCaoBaiNew from '../page/PageCaoBaiNew'
 import PageFastContent from '../page/PageFastContent'
-import PageSpinWordNew from '../page/PageSpinWordNew'
 import PageNgonNgu from "../page/PageNgonNgu";
 import Footer from './Footer'
 import '../../css/style.css'
@@ -54,7 +53,6 @@ export default function Main() {
 
   // }, [])
 
-
   const handleGetCampaign = () => {
     let current_cam = dataCam.filter(item => {
       return item.id === data_current_id_cam;
@@ -69,39 +67,9 @@ export default function Main() {
     handleGetCampaign();
   }, [data_current_id_cam])
 
-  const getCampaign = () => {
-    const select_all_key = {id: -1, label: 'Tất cả key', language: 'Vietnamese', check: 0}
-    ajaxCallGet(`get-cam`).then(async rs => {
-      let arr = [];
-      if (rs.length === 0) {
-        dispatch(changeDataCam([]))
-      } else {
-        await rs.map(item => {
-          arr.push({ id: item.id, value: item.campaign, label: item.campaign, language: item.language, check: item.check })
-        })
-        dispatch(changeDataCam([...arr, select_all_key]))
-      }
-    }).catch(err => console.log(err))
+  function handleSubmitSetting() {
+
   }
-
-  const handleGetAllKeyGg = async () => {
-    await ajaxCallGet(`get-all-key-google`).then(async rs => {
-      await dispatch(changeDataKeyGoogle([...rs]))
-    }).catch(err => console.log(err))
-  }
-
-  const handleGetAllKeyYt = async () => {
-    await ajaxCallGet(`get-all-key-youtube`).then(async rs => {
-      await dispatch(changeDataKeyYoutube([...rs]))
-    }).catch(err => console.log(err))
-  }
-
-  useEffect(() => {
-    getCampaign();
-    handleGetAllKeyGg();
-    handleGetAllKeyYt();
-  }, [tab])
-
   return (
     <React.Fragment>
       <div className='d-flex justify-content-between align-items-center' style={{ borderBottom: '1px solid #ccc', marginBottom: '20px' }}>
@@ -110,11 +78,6 @@ export default function Main() {
           id='tabs'
           role='tablist'
         >
-          {/* <li className='nav-item'>
-          <a href='#' className='logo-header'>
-            <img src='' alt='logo' />
-          </a>
-        </li> */}
           <li className='nav-item ms-4' role='presentation'>
             <button
               className='nav-link active'
@@ -191,27 +154,63 @@ export default function Main() {
             </button>
           </li>
         </ul>
-        <div className='col-6 d-flex flex-row'>
-          <div className='col-6 px-1 d-flex align-items-center justify-content-between name-campaign'>
-            <label className='col-4 text-start fs-7 fw-bolder'>
-              Tên chiến dịch:{' '}
-            </label>
-            {/* <input
-              type='text'
-              className='col-8'
-              placeholder='Cào bài cho RDONE'
-            /> */}
-            <ChonChienDich />
 
-          </div>
-          <div
-            className='col-6 name-domain d-flex align-items-center'
-            style={{ marginLeft: '16px' }}
-          >
-            <label className='col-4 text-start fs-7 fw-bolder'>
-              Ngôn ngữ:{' '}
-            </label>
-            <ChonNgonNgu />
+        <button type="button" className="btn btn-primary fw-bolder" data-bs-toggle="modal" data-bs-target="#myModalsetting" style={{ fontSize: '14px' }}>
+          Cài đặt
+        </button>
+        <div>
+          <div className="modal fade" id="myModalsetting">
+            <div className="modal-dialog modal-dialog-centered" style={{ minWidth: '700px' }}>
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h4 className="modal-title">Thêm chiến dịch</h4>
+                  <button type="button" className="btn-close" data-bs-dismiss="modal" />
+                </div>
+                <div className="modal-body">
+                  <form>
+                    <div className="row">
+                      <div className='col-12 px-1 d-flex align-items-center justify-content-between name-campaign mb-3'>
+                        <label className='col-4 text-start fs-7 fw-bolder'>
+                          Tên chiến dịch:
+                        </label>
+                        <ChonChienDich />
+
+                      </div>
+                      <div className='col-12 px-1 d-flex align-items-center justify-content-between name-campaign mb-3'>
+                        <label className='col-4 text-start fs-7 fw-bolder'>
+                          Ngôn ngữ:{' '}
+                        </label>
+
+                        <ChonNgonNgu />
+                      </div>
+                      <div className='col-12 px-1 d-flex align-items-center justify-content-between name-campaign mb-3'>
+                        <label className='col-4 text-start fs-7 fw-bolder'>
+                          Temperature:{' '}
+                        </label>
+                        <input type="text"
+                          className="form-control" id="name-campaign"
+                          placeholder="Nhập temperature...."
+                        />
+                      </div>
+                      <div className='col-12 px-1 d-flex align-items-center justify-content-between name-campaign mb-3'>
+                        <label className='col-4 text-start fs-7 fw-bolder'>
+                          ToKen:{' '}
+                        </label>
+
+                        <input type="text"
+                          className="form-control" id="name-campaign"
+                          placeholder="Nhập token...."
+                        />
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div className="modal-footer">
+                  <button type="button" className="btn btn-success" data-bs-dismiss="modal" onClick={handleSubmitSetting}>Submit</button>
+                  <button type="button" className="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -250,7 +249,7 @@ export default function Main() {
         >
           <PageQlKeyGoogle />
         </div>
-        
+
         <div
           className='tab-pane fade'
           id='pills-fast'

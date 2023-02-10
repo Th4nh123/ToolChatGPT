@@ -61,53 +61,11 @@ const DanhSachKey = () => {
 
     }
 
-    useEffect(() => {
-        getDataIdHaveVideo(current_id_cam)
-        getDataIdHaveUrlGoogle(current_id_cam)
-    }, [current_id_cam])
-
-
-    const getDataIdHaveVideo = async (id_cam) => {
-        let arr1 = [];
-        await ajaxCallGet(`get-data-id-have-video/${id_cam}`).then(async rs => {
-            await rs.map(item => {
-                arr1.push(item.id);
-            })
-            let reducedArray = arr1.reduce((acc, curr, _, arr) => {
-                if (acc.length == 0) acc.push({ idKey: curr, count: 1 })
-                else if (acc.findIndex(f => f.idKey === curr) === -1) acc.push({ idKey: curr, count: 1 })
-                else ++acc[acc.findIndex(f => f.idKey === curr)].count
-                return acc
-            }, []);
-
-            dispatch(changeDataKeyHaveVideo([...reducedArray]))
-        })
-    }
-
-    const getDataIdHaveUrlGoogle = async (id_cam) => {
-        let arr1 = [];
-        await ajaxCallGet(`get-data-id-have-url-google/${id_cam}`).then(async rs => {
-            await rs.map(item => {
-                arr1.push(item.id);
-            })
-            let reducedArray = arr1.reduce((acc, curr, _, arr) => {
-                if (acc.length == 0) acc.push({ idKey: curr, count: 1 })
-                else if (acc.findIndex(f => f.idKey === curr) === -1) acc.push({ idKey: curr, count: 1 })
-                else ++acc[acc.findIndex(f => f.idKey === curr)].count
-                return acc
-            }, []);
-
-            dispatch(changeDataKeyHaveGoogle([...reducedArray]))
-        })
-    }
-
-
     const handleChangeCheckBoxKey = (id) => {
         dispatch(changeCheckKey(addRemoveCheck(id)))
     }
 
     const handleCheckKeyAll = () => {
-        console.log(dataKey)
         if ($('#check-key-all').prop('checked')) {
             getIdKey();
             $('.start-cao-lai').removeClass('d-none')
@@ -169,7 +127,7 @@ const DanhSachKey = () => {
                             />
                             <label
                                 style={{ marginLeft: '8px', cursor: 'pointer' }}
-                                htmlFor="key_word"
+                                htmlFor
                                 className={
                                     item.check == true
                                         ? `h-100 mt-2 text-primary label-key ${label_key}`
