@@ -150,10 +150,6 @@ const DanhSachKey = () => {
                                 // className={get_current_id_key.current === item.id ? 'fa-regular fa-circle-play color-primary' : ''}
                                 style={{ fontSize: '13px', position: 'absolute', right: '16px', color: '#605c5c' }}
                             >
-                                {/* {<span style={{ color: "red", marginRight: "10px" }}>2</span>}
-                                {<span style={{ color: "orange", marginRight: "10px" }}>2</span>} */}
-                                {/* {!isEnoughtYoutube(item.id, item.ky_hieu, data_key_have_video) && <i className="fa-brands fa-youtube" style={{ color: 'red' }}></i>}
-                                {!isEnoughtGoogle(item.id, item.ky_hieu, data_key_have_url_google) && <i className="fa-brands fa-google" style={{ color: 'orange', marginLeft: '8px' }}></i>} */}
                             </span>
                         </div>
                     )

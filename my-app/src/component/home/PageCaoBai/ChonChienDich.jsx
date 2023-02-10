@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { ajaxCallGet, CX_SEARCH, LINK_SEARCH } from '../../libs/base';
+import { ajaxCallGet } from '../../libs/base';
 import { changeCurrentIdCam, changeDataKey, changeDataLang } from '../../reducer_action/BaseReducerAction';
 import Select from 'react-select'
 
@@ -37,18 +37,17 @@ export default function ChonChienDich() {
       dispatch(changeDataLang([data_lang]))
       // setItemLocalStorage('id_cam', [id]);
       handleGetKeyByIdCam(id)
-
     }
-
   }, [selectedOption])
-
 
   return (
     <Select className='col-8 o-campaigns'
       defaultValue={dataCam.filter((item) => item.id === data_current_id_cam)}
       value={dataCam.filter((item) => item.id === data_current_id_cam)}
       onChange={handleChangeOption()}
-      options={dataCam} />
+      options={dataCam}
+      placeholder="Nhập chiến dịch...."
+    />
   )
 
 }

@@ -10,17 +10,23 @@ import { useDispatch, useSelector } from 'react-redux'
 export default function PageFastContent() {
 
     const dataKeyGoogle = useSelector(state => state.base.data_key_google)
+    const dataToken = useSelector(state => state.base.data_token)
+    const dataTemperture = useSelector(state => state.base.data_temperture)
     var [state, setState, ref] = useState("<p>Text here.............</p>")
     const [Content, setCentent] = useState({
         noidung: 'Nhập câu hỏi ở đây',
     });
 
-    console.log(dataKeyGoogle);
     const handleTest = () => {
         if (dataKeyGoogle.length === 0) {
             Const_Libs.TOAST.error("Hãy nhập 1 Key Api")
             return;
         }
+        if (!Number.isInteger(dataToken) || !Number.isInteger(dataToken)) {
+            Const_Libs.TOAST.error("Hãy bổ sung đầy dủ thông tin cho cài đặt")
+            return;
+        }
+        return;
         $('.spin-get-answer').removeClass('d-none')
         $('.get-answer').text('Đang lấy câu trả lời')
         console.log(document.querySelector("textarea"));
@@ -32,8 +38,8 @@ export default function PageFastContent() {
         var raw = JSON.stringify({
             "model": "text-davinci-003",
             "prompt": Content.noidung,
-            "max_tokens": 100,
-            "temperature": 0,
+            "max_tokens": dataToken,
+            "temperature": dataTemperture,
             "logprobs": 10
         });
         var requestOptions = {

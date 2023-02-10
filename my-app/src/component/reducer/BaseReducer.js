@@ -3,8 +3,8 @@ const initialState = {
   data_url: [],
   data_black_list: [],
   data_spin_word: [],
-  data_detail_post:{},
-  current_id_key:null,
+  data_detail_post: {},
+  current_id_key: null,
   data_cam: [],
   data_lang: [],
   current_id_cam: null,
@@ -16,6 +16,8 @@ const initialState = {
   data_key_youtube: [],
   data_ngon_ngu: [],
   data_key_have_video: [],
+  temperture: null,
+  token: null
 }
 const BaseReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -83,21 +85,21 @@ const BaseReducer = (state = initialState, action) => {
     }
 
     case 'CHANGE_CHECK_KEY': {
-      return{
+      return {
         ...state,
         check_key: action.check_key
       }
     }
 
     case 'CHANGE_DATA_URL_ALL': {
-      return{
+      return {
         ...state,
         data_url_all: action.data_url_all
       }
     }
 
     case 'CHANGE_KEY_GOOGLE': {
-      return{
+      return {
         ...state,
         key_google: action.key_google
       }
@@ -111,33 +113,45 @@ const BaseReducer = (state = initialState, action) => {
     }
 
     case 'CHANGE_DATA_KEY_GOOGLE': {
-      return{
+      return {
         ...state,
         data_key_google: action.data_key_google
       }
     }
 
     case 'CHANGE_DATA_KEY_YOUTUBE': {
-      return{
+      return {
         ...state,
         data_key_youtube: action.data_key_youtube
       }
     }
 
     case 'CHANGE_DATA_KEY_HAVE_VIDEO': {
-      return{
+      return {
         ...state,
         data_key_have_video: action.data_key_have_video
       }
     }
 
+    case 'CHANGE_TEMPERTURE': {
+      return {
+        ...state,
+        data_temperture: action.data_temperture
+      }
+    }
+    case 'CHANGE_CURRENT_TOKEN': {
+      return {
+        ...state,
+        data_token: action.data_token
+      }
+    }
     case 'CHANGE_DATA_KEY_HAVE_GOOGLE': {
-      return{
+      return {
         ...state,
         data_key_have_google: action.data_key_have_google
       }
     }
-    
+
     default: {
       return state
     }

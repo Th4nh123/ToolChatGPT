@@ -13,10 +13,12 @@ const LayUrlNew = () => {
     const dispatch = useDispatch();
     const data_current_id_cam = useSelector(state => state.base.current_id_cam)
     const data_key_checked = useSelector(state => state.base.check_key)
-    const dataKey = useSelector(state => state.base.data_key)
     const dataKeyGoogle = useSelector(state => state.base.data_key_google)
+    const dataToken = useSelector(state => state.base.data_token)
+    const dataTemperture = useSelector(state => state.base.data_temperture)
 
     const TestKeyGoogle = async () => {
+        const status = null;
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
         myHeaders.append("Authorization", `Bearer ${dataKeyGoogle[0].key_api}`);
@@ -35,21 +37,30 @@ const LayUrlNew = () => {
             redirect: 'follow'
         };
 
-        fetch("https://api.openai.com/v1/completions", requestOptions)
-            .then(response => response.text())
+        await fetch("https://api.openai.com/v1/completions", requestOptions)
+            .then(async response => {
+                status = response.status
+                response.text()
+            })
             .then(async result => {
-                let answer = JSON.parse(result)
-                $('.spin-get-answer').addClass('d-none')
-                $('.get-answer').html('Lấy câu trả lời')
                 Const_Libs.TOAST.success("Đang lấy key")
             })
             .catch(error => console.log('error', error));
+            return status;
     }
 
     const handleGetUrl = async () => {
+        if (!Number.isInteger(dataToken) || !Number.isInteger(dataToken)) {
+            Const_Libs.TOAST.error("Hãy bổ sung đầy dủ thông tin cho cài đặt")
+            return;
+        }
         if (data_key_checked.length === 0) {
             Const_Libs.TOAST.error("Vui lòng chọn trước khi thực hiện!!!")
         } else {
+            if (TestKeyGoogle !== 200) {
+                Const_Libs.TOAST.error("Có Key lỗi")
+            }
+            return;
             $('.spin-get-url').removeClass('d-none')
             for (const checkbox of document.querySelectorAll('input[name="key"]')) {
                 if (checkbox.checked) {
@@ -99,7 +110,7 @@ const LayUrlNew = () => {
                                     console.log(rs)
                                     checkbox.checked = false;
                                 })
-                                .catch(error => console.log('error', error))
+                                    .catch(error => console.log('error', error))
                             }).catch(err => console.log(err))
                     })
                 }
@@ -110,7 +121,7 @@ const LayUrlNew = () => {
                 $('.status-stop').removeClass('d-none')
                 document.querySelector('input[name="key-all"]').checked = false;
                 Const_Libs.TOAST.success("Hoàn thành")
-            }, 10000)
+            }, 5000)
         }
     }
 

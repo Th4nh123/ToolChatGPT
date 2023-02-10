@@ -9,7 +9,7 @@ import '../../css/style.css'
 import { useDispatch, useSelector } from 'react-redux'
 import PageChienDichNew from '../page/PageChienDichNew'
 import { ajaxCallGet, getItemLocalStorage } from '../libs/base'
-import { changeDataCam, changeDataKeyGoogle, changeDataKeyYoutube, changeKeyGoogle, changeTrangThaiCam } from '../reducer_action/BaseReducerAction'
+import { changeDataCam, changeDataKeyGoogle, changeDataKeyYoutube, changeKeyGoogle, changeTrangThaiCam , changeCurrentToken , changeTemperture } from '../reducer_action/BaseReducerAction'
 import ChonChienDich from '../home/PageCaoBai/ChonChienDich'
 import ChonNgonNgu from '../home/PageCaoBai/ChonNgonNgu'
 import PageQLKeyNew from '../page/PageQLKeyNew'
@@ -67,9 +67,18 @@ export default function Main() {
     handleGetCampaign();
   }, [data_current_id_cam])
 
-  function handleChange() {
+  const dataTemperture = useSelector(state => state.base.data_temperture)
+  const dataToken = useSelector(state => state.base.data_token)
 
+  function handleChangeTemperature(event) {
+    dispatch(changeTemperture(event.target.value))
   }
+
+  function handleChangeToken(event) {
+    console.log(event.target.value);
+    dispatch(changeCurrentToken(event.target.value))
+  }
+
   return (
     <React.Fragment>
       <div className='d-flex justify-content-between align-items-center' style={{ borderBottom: '1px solid #ccc', marginBottom: '20px' }}>
@@ -163,7 +172,7 @@ export default function Main() {
             <div className="modal-dialog modal-dialog-centered" style={{ minWidth: '700px' }}>
               <div className="modal-content">
                 <div className="modal-header">
-                  <h4 className="modal-title">Thêm chiến dịch</h4>
+                  <h2 className="modal-title">Cài đặt</h2>
                   <button type="button" className="btn-close" data-bs-dismiss="modal" />
                 </div>
                 <div className="modal-body">
@@ -190,7 +199,9 @@ export default function Main() {
                         <input type="text"
                           className="form-control" id="name-campaign"
                           placeholder="Nhập temperature...."
-                          onChange={handleChange()}
+                          onChange={handleChangeTemperature}
+                          value={dataTemperture}
+                          name="temperature"
                         />
                       </div>
                       <div className='col-12 px-1 d-flex align-items-center justify-content-between name-campaign mb-3'>
@@ -201,15 +212,15 @@ export default function Main() {
                         <input type="text"
                           className="form-control" id="name-campaign"
                           placeholder="Nhập token...."
-                          onChange={handleChange()}
+                          onChange={handleChangeToken}
+                          value={dataToken}
+                          name="token"
                         />
                       </div>
                     </div>
                   </form>
                 </div>
                 <div className="modal-footer">
-                  <button type="button" className="btn btn-success" data-bs-dismiss="modal">Submit</button>
-                  <button type="button" className="btn btn-danger" data-bs-dismiss="modal">Close</button>
                 </div>
               </div>
             </div>

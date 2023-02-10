@@ -1,8 +1,4 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
-
-import BatDauCao from './BatDauCao'
-import DungCaoBai from './DungCaoBai'
 import DanhSachKey from './DanhSachKey'
 
 const PageCaoBaiLeft = (props) => {

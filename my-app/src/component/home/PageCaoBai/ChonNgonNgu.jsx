@@ -23,6 +23,8 @@ export default function ChonNgonNgu() {
     <Select className={`col-8 o-languages`}
       value={dataLang}
       onChange={handleChangeOption()}
-      options={options} />
+      options={options} 
+      placeholder="Nhập ngôn ngữ...." 
+    />
   )
 }

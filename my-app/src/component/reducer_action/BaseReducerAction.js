@@ -124,6 +124,20 @@ export const changeDataKeyHaveGoogle = e => {
   }
 }
 
+export const changeTemperture = e => {
+  return {
+    type: 'CHANGE_TEMPERTURE',
+    data_temperture: e
+  }
+}
+
+export const changeCurrentToken = e => {
+  return {
+    type: 'CHANGE_CURRENT_TOKEN',
+    data_token: e
+  }
+}
+
 
 
 
