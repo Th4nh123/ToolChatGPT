@@ -208,7 +208,7 @@ export default function Main() {
                   </form>
                 </div>
                 <div className="modal-footer">
-                  <button type="button" className="btn btn-success" data-bs-dismiss="modal" onClick={handleSubmitSetting}>Submit</button>
+                  <button type="button" className="btn btn-success" data-bs-dismiss="modal">Submit</button>
                   <button type="button" className="btn btn-danger" data-bs-dismiss="modal">Close</button>
                 </div>
               </div>
